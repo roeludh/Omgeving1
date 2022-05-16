@@ -9,8 +9,8 @@ pipeline {
         sh 'docker build -t roeludh/quintortest .'
       }
     }
-...
-        stage('Scan') {
+
+   stage('Scan') {
             steps {
                 // Install trivy
                 sh 'curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.18.3'
@@ -33,4 +33,3 @@ pipeline {
                 sh 'trivy filesystem --ignore-unfixed --vuln-type os,library --exit-code 1 --severity CRITICAL ./nodejs'
 
             }
-...
