@@ -17,13 +17,13 @@ pipeline {
 
                 // Scan all vuln levels
                 sh 'mkdir -p reports'
-                sh 'trivy image --format template --template @./html.tpl -o report.html roeludh/quintortest'
+                sh 'trivy image --format template --template @./html.tpl -o test.html roeludh/quintortest'
                 publishHTML target : [
                     allowMissing: true,
                     alwaysLinkToLastBuild: true,
                     keepAll: true,
                     reportDir: 'reports',
-                    reportFiles: 'report.html',
+                    reportFiles: 'test.html',
                     reportName: 'Trivy Scan',
                     reportTitles: 'Trivy Scan'
                 ]
