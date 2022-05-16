@@ -23,7 +23,7 @@ pipeline {
                     alwaysLinkToLastBuild: true,
                     keepAll: true,
                     reportDir: 'reports',
-                    reportFiles: 'nodjs-scan.html',
+                    reportFiles: 'report.html',
                     reportName: 'Trivy Scan',
                     reportTitles: 'Trivy Scan'
                 ]
