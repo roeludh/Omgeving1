@@ -18,7 +18,7 @@ pipeline {
                 // Scan all vuln levels
                 sh 'mkdir -p reports'
                 sh 'trivy image -f json -o results.json roeludh/quintortest:latest'
-                publishHTML target : [
+                publishJson target : [
                     allowMissing: true,
                     alwaysLinkToLastBuild: true,
                     keepAll: true,
