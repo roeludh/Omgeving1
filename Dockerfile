@@ -1,1 +1,1 @@
-FROM roeludh/quintortest:latest
+FROM docker.io/roeludh/quintortest:latest
