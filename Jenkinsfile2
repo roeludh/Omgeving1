@@ -6,12 +6,12 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t roeludh/quintortest:latest .'
+        sh 'docker build -t darinpope/java-web-app:latest .'
       }
     }
     stage('Scan') {
       steps {
-        sh 'trivy roeludh/quintortest:latest'
+        sh 'trivy --no-progress --exit-code 1 --severity MEDIUM,HIGH,CRITICAL darinpope/java-web-app:latest'
       }
     }
   }
