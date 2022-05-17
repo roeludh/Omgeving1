@@ -17,7 +17,7 @@ pipeline {
 
                 // Scan all vuln levels
                 //sh 'mkdir -p reports'
-                sh 'trivy image --ignore-unfixed --vuln-type os,library --template "@./html.tpl" -o reports/test.html roeludh/quintortest:latest'
+                sh 'trivy image --template @./html.tpl -o reports/test.html roeludh/quintortest:latest'
                 publishHTML target : [
                     allowMissing: true,
                     alwaysLinkToLastBuild: true,
