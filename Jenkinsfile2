@@ -17,13 +17,13 @@ pipeline {
 
                 // Scan all vuln levels
                 sh 'mkdir -p reports'
-                sh 'trivy image --ignore-unfixed --f table -o reports/report1.xml quintoramersfoort/fission-java:v11-slim-1.1'
-                publishXML target : [
+                sh 'trivy image --ignore-unfixed --f table -o reports/report1.json quintoramersfoort/fission-java:v11-slim-1.1'
+                publishJson target : [
                     allowMissing: true,
                     alwaysLinkToLastBuild: true,
                     keepAll: true,
                     reportDir: 'reports',
-                    reportFiles: 'report1.html',
+                    reportFiles: 'report1.json',
                     reportName: 'Trivy Scan',
                     reportTitles: 'Trivy Scan'
                 ]
