@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t quintoramersfoort/fission-java:latest .'
+        sh 'docker build -t quintoramersfoort/fission-java:v11-slim-1.1 .'
       }
     }
    stage('Scan') {
@@ -17,7 +17,7 @@ pipeline {
 
                 // Scan all vuln levels
                 sh 'mkdir -p reports'
-                sh 'trivy image --ignore-unfixed quintoramersfoort/fission-java'
+                sh 'trivy image --ignore-unfixed quintoramersfoort/fission-java:v11-slim-1.1'
                 publishHTML target : [
                     allowMissing: true,
                     alwaysLinkToLastBuild: true,
