@@ -12,12 +12,12 @@ pipeline {
    stage('Scan') {
             steps {
                 // Install trivy
-                sh 'curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.18.3'
-                sh 'curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/html.tpl > html.tpl'
+                //sh 'curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.18.3'
+                //sh 'curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/html.tpl > html.tpl'
 
                 // Scan all vuln levels
                 sh 'mkdir -p reports'
-                sh 'trivy image --ignore-unfixed --format template --template "@./junit.tpl" -o reports/report1.xml quintoramersfoort/fission-java:v11-slim-1.1'
+                sh 'trivy image --ignore-unfixed --format template --template "@junit.tpl" -o reports/report1.xml quintoramersfoort/fission-java:v11-slim-1.1'
                 publishXML target : [
                     allowMissing: true,
                     alwaysLinkToLastBuild: true,
