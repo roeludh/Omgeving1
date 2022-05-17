@@ -13,11 +13,11 @@ pipeline {
             steps {
                 // Install trivy
                 sh 'curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.18.3'
-                sh 'curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/html.tpl > html.tpl'
+                sh 'curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/html.tpl > /usr/local/bin/html.tpl'
 
                 // Scan all vuln levels
                 sh 'mkdir -p reports'
-                sh 'trivy image --format template --template "@html.tpl" -o reports/report.html roeludh/quintortest:latest'
+                sh 'trivy image --format template --template "@./html.tpl" -o reports/report.html roeludh/quintortest:latest'
                 publishHTML target : [
                     allowMissing: true,
                     alwaysLinkToLastBuild: true,
