@@ -1,1 +1,1 @@
-FROM ubuntu
+FROM docker.io/roeludh/quintortest:latest
