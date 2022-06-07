@@ -1,1 +1,1 @@
-FROM docker.io/roeludh/quintor-java:latest
+FROM docker.io/roeludh/quintortest
